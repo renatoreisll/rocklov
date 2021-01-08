@@ -31,31 +31,6 @@ Dado('que acesso a página de cadastro') do
     expect(page).to have_css ".dashboard"
     end
 
-  Quando('submeto o meu cadastro sem o nome') do
-    find("#email").set Faker::Internet.free_email
-    find("#password").set "pwd123"
-    click_button "Cadastrar"
-  end
-  
-  Quando('submeto o meu cadastro sem o email') do
-    find("#fullName").set "Renato Reis"
-    find("#password").set "pwd123"
-    click_button "Cadastrar"
-  end
-
-  Quando('submeto o meu cadastro com email incorreto') do
-    find("#fullName").set "Renato Reis"
-    find("#email").set "adsadsad*asdasdasd.com"
-    find("#password").set "pwd123"
-    click_button "Cadastrar"
-  end
-
-  Quando('submeto o meu cadastro sem a senha') do
-    find("#fullName").set "Renato Reis"
-    find("#email").set Faker::Internet.free_email
-    click_button "Cadastrar"
-  end
-
   Então('vejo a mensagem de alerta: {string}') do |expected_alert|
     alert = find(".alert-dark")
     expect(alert.text).to eql expected_alert
